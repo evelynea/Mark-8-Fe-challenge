@@ -43,13 +43,33 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
             <img src={`delete-01.png`} alt="delete" />
           </button>
         </div>
-        {/* Additional items here */}
+        <div className="border-2 flex justify-between rounded-lg p-6 gap-8">
+          <div className="flex gap-2">
+            <p className="flex justify-center items-center text-bold text-xl">2</p>
+            <div className="flex justify-center items-center gap-4 text-xs">
+              <img src={`bg-image.svg`} alt="product" />
+              <div>
+                <p className="font-semibold py-2">Product 2</p>
+                <p className="text-gray-500">9,000 Rwf</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <button className="px-6 border-2 rounded-lg">-</button>
+            <button className="px-10 bg-gray-100 rounded-lg">1</button>
+            <button className="px-6 border-2 rounded-lg">+</button>
+          </div>
+          <button className="p-6 border-2 rounded-lg">
+            <img src={`delete-01.png`} alt="delete" />
+          </button>
+        </div>
+        
       </div>
       <div className="absolute bottom-0 w-full border-t-2">
         <div className="flex justify-between p-6">
           <div>
             <p>Total:</p>
-            <p className="font-bold text-xl">36,000 Rwf</p>
+            <p className="font-bold text-xl">18,000 Rwf</p>
           </div>
           <button
             className="flex justify-center items-center border-2 font-bold gap-2 rounded-md text-black px-8"

@@ -1,5 +1,12 @@
 "use client";
 import { useEffect, useState } from 'react'; 
+
+type Store = {
+  name: string;
+  id:string;
+  thumbnail: string
+}
+
 export default function ProductByID(){
 
 const [token, setToken] = useState("");
@@ -32,7 +39,7 @@ const [token, setToken] = useState("");
 
   useEffect(() => {
     getData().then(data => {
-      setStores(data.data.stores); // Adjust according to the actual data structure
+      setStores(data.data.stores); 
     }).catch(error => {
       console.error('Error fetching data:', error);
     });
@@ -45,7 +52,7 @@ const [token, setToken] = useState("");
             <div className="w-2/5 rounded-lg border-2">
                 <img src={`/bg-image2.svg`} alt="product picture"/>
                 <div className="flex p-2">
-                    <img src={`/bg-image2.svg`} alt="product picture" className="w-10 rounded-lg"/>
+                    <img src={`/bg-image2.svg`} alt="product picture" className="w-10 rounded-lg" />
                     <img src={`/bg-image2.svg`} alt="product picture" className="w-10 rounded-lg"/>
                     <img src={`/bg-image2.svg`} alt="product picture" className="w-10 rounded-lg"/>
                     <img src={`/bg-image2.svg`} alt="product picture" className="w-10 rounded-lg"/>
@@ -54,7 +61,7 @@ const [token, setToken] = useState("");
                 </div>
             </div>
             <div className="w-3/5 rounded-lg border-2 text-gray-700">
-                <div className="flex justify-between border-2 p-8">
+                <div className="flex justify-between border-2 ">
                     <div className="flex gap-4">
                         <p className="font-bold text-xl"> Product Details</p>
                         <p className="text-xs bg-gray-100 p-2 h-6 flex items-center font-semibold rounded-lg">IN STOCK</p>
@@ -91,7 +98,7 @@ const [token, setToken] = useState("");
                 </button>
                 </div>
                 </div>
-                <div className="flex justify-between border-2 p-8">
+                <div className="flex justify-between border-2 ">
                     <div className="flex gap-2">
                         <p className="font-semibold"> Store Info:</p>
                         <img src={`/bg-image.svg`} alt="shop-color" className="rounded-full w-8 h-8" />

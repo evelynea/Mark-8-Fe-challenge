@@ -11,10 +11,10 @@ export default function Login() {
   const [error, setError] = useState('');
 
   async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault(); // Prevents the default form submission behavior
+    event.preventDefault(); 
 
     try {
-      const response = await fetch('https://api.mark8.awesomity.rw/auth/login', { // Replace with your actual API endpoint
+      const response = await fetch('https://api.mark8.awesomity.rw/auth/login', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,8 +30,8 @@ export default function Login() {
       }
 
       const data = await response.json();
-      localStorage.setItem('authToken', data.data.accessToken); // Save token to local storage
-      // Redirect or handle successful login
+      localStorage.setItem('authToken', data.data.accessToken); 
+      
       router.push('/products');
 
     } catch (error) {
@@ -66,7 +66,7 @@ export default function Login() {
             <form onSubmit={handleLogin}>
               <div className="mb-4 relative">
                 <div className="absolute inset-y-0 left-0 flex justify-center items-center px-3">
-                  <img src={`/mail-01.svg`} alt="mail icon" />
+                  <img src={`/mail-01.svg`} alt="mail icon" className='mt-6' />
                 </div>
                 <label htmlFor="email" className="block text-gray-600">Email</label>
                 <input
@@ -82,7 +82,7 @@ export default function Login() {
               </div>
               <div className="mb-4 relative">
                 <div className="absolute inset-y-0 left-0 flex justify-center items-center px-3">
-                  <img src={`/lock-password.svg`} alt="lock icon" />
+                  <img src={`/lock-password.svg`} alt="lock icon" className='mt-6' />
                 </div>
                 <label htmlFor="password" className="block text-gray-600">Password</label>
                 <input

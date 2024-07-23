@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 type Product = {
@@ -33,7 +34,7 @@ export default function SingleProductPage(){
 
   useEffect(() => {
     getData().then(data => {
-      setProducts(data.data.products); // Adjust according to the actual data structure
+      setProducts(data.data.products); 
     }).catch(error => {
       console.error('Error fetching data:', error);
     });
@@ -42,6 +43,7 @@ export default function SingleProductPage(){
   return(
     <>
     {products.map((product)=>(
+      <Link href="/details">
         <div className="border-2 rounded-lg" style={{width: "360px", height:"344px"}}>
         <img src={product.thumbnail[0]} alt="product-pic" style={{height: "256px", backgroundColor:"#d1d1d1"}}/>
         <div className="p-4 text-xs flex justify-between">
@@ -59,6 +61,7 @@ export default function SingleProductPage(){
       </div>
         </div>
       </div>
+      </Link>
     ))}
       
     </>

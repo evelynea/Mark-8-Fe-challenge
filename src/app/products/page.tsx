@@ -16,7 +16,7 @@ export default function ProductPage(){
             <div className="flex flex-col gap-4 items-center justify-center">
               <div className="relative">
                 <div className="absolute inset-y-0 start-0 flex items-center px-3">
-                    <img src={`/search-01.png`} alt="search icon" />
+                    <img src={`/search.svg`} alt="search icon" />
                 </div>
                 <input
                   type="text"

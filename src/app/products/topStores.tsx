@@ -9,7 +9,7 @@ type Store = {
   id:string;
   image:string;
   description:string
-  // Add other properties of the store object here
+  
 };
 
 export default function TopStores(){
@@ -37,7 +37,7 @@ export default function TopStores(){
 
   useEffect(() => {
     getData().then(data => {
-      setStores(data.data.stores); // Adjust according to the actual data structure
+      setStores(data.data.stores); 
     }).catch(error => {
       console.error('Error fetching data:', error);
     });

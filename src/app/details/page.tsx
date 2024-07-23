@@ -1,48 +1,54 @@
 "use client";
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+
+type Product = {
+  name: string;
+  id:string;
+  thumbnail: string
+}
 
 export default function Details(){
 
-    const [product, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const token = localStorage.getItem('authToken');
+  
 
-    async function getData() {
-        const token = localStorage.getItem('authToken');
-        console.log("tokens "+token)
-        const response = await fetch(`https://api.mark8.awesomity.rw/products/5ec23dc7-d445-40ae-bf04-4c48ccb5f0fd`, {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
-    
-        if (!response.ok) {
-          // Handle the error
-          throw new Error('Network response was not ok ' + response.statusText);
-        }
-    
-        const data = await response.json();
-        
-        return data;
-      }
+  async function getData() {
+    console.log("token"+token)
+    const response = await fetch(`https://api.mark8.awesomity.rw/products?pageNumber=1&recordsPerPage=10`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    });
 
-      useEffect(() => {
-        getData().then(data => {
-          setProducts(data.data); // Adjust according to the actual data structure
-        }).catch(error => {
-          console.error('Error fetching data:', error);
-        });
-      }, []);
-      console.log(JSON.stringify(product))
+    if (!response.ok) {
+      // Handle the error
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+
+    const data = await response.json();
+    return data;
+  }
+
+  useEffect(() => {
+    getData().then(data => {
+      setProducts(data.data.products); 
+    }).catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  }, []);
     
     return(
         <>
         <div className="mx-14 ">
             <div className="flex text-xs gap-4 py-4">
                 <img src={`/arrow-left-02.svg`} alt="" />
-                <button>Home</button>
-                <button>Products</button>
-                <button>Vectors</button>
-                <button>Product 1</button>
+                <Link href="/products"><button> Home</button></Link>
+                <Link href="/products"><button>Products</button> </Link>
+                <Link href="/saved"><button>Vectors</button></Link>
+                <Link href="/saved"><button>Saved</button></Link>
             </div>
             <div className="flex gap-4">
             <div className="w-2/5 rounded-lg border-2">
@@ -72,13 +78,13 @@ export default function Details(){
                     </div>
                 </div>
                 <div className="p-8">
-                <p className="text-2xl font-bold">{product.name}</p>
+                <p className="text-2xl font-bold">Product 5</p>
                 <p className="py-2">
-                    <span style={{color: "#C1CF16"}} className="font-bold">{product.unitPrice}</span>
-                    <span className="text-gray-400 px-2 text-xs">12,000 Rwf</span> 
+                    <span style={{color: "#C1CF16"}} className="font-bold">9,000 Rwf</span>
+                    <span className="text-gray-400 px-2 text-xs" style={{textDecoration: "line-through"}}>12,000 Rwf</span> 
                 </p>
                 <p className="font-bold py-4"> Description</p>
-                <p className="text-gray-600">{product.description}</p>
+                <p className="text-gray-600">A cozy boutique offering a curated selection of unique, high-quality clothing and accessories for fashion-forward individuals.</p>
                 <p className="font-bold text-m">Reviews</p>
                 <p className="py-2 flex gap-1">
                     <img src={`/star.svg`} alt=" star-rating " /> 4.9
@@ -108,15 +114,66 @@ export default function Details(){
             </div>
             </div>
             <h1 className="font-bold py-8 text-2xl">You might also like</h1>
-            <div className="flex">
-            <div className="border-2 rounded-lg" style={{width: "360px", height:"344px"}}>
-              <img src="" alt="product-pic" style={{height: "256px", backgroundColor:"#d1d1d1"}}/>
+            <div className="flex gap-8">
+            <div className="border-2 rounded-lg" style={{ height:"344px"}}>
+              <img src={`bg-image2.svg`} alt="product-pic" style={{height: "256px", backgroundColor:"#d1d1d1"}}/>
               <div className="p-4 text-sm flex justify-between">
                 <div>
                   <p className="font-semibold">Product 1</p>
                   <p className="py-2">
                     <span style={{color: "#C1CF16"}}className="font-bold">9000RWF</span>
-                    <span className="text-gray-400 px-2">12,000Rwf</span> 
+                    <span className="text-gray-400 px-2" style={{textDecoration: "line-through"}}>12,000Rwf</span> 
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <button className=" p-3 border-2 rounded-lg"><img src={`shopping-cart-02.png`} alt="filter" /></button>
+                  <button className="p-3 border-2 rounded-lg"><img src={`favourite.png`} alt="button" /></button>
+              
+            </div>
+              </div>
+            </div>
+            <div className="border-2 rounded-lg" style={{ height:"344px"}}>
+              <img src={`bg-image2.svg`} alt="product-pic" style={{height: "256px", backgroundColor:"#d1d1d1"}}/>
+              <div className="p-4 text-sm flex justify-between">
+                <div>
+                  <p className="font-semibold">Product 1</p>
+                  <p className="py-2">
+                    <span style={{color: "#C1CF16"}}className="font-bold">9000RWF</span>
+                    <span className="text-gray-400 px-2" style={{textDecoration: "line-through"}}>12,000Rwf</span> 
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <button className=" p-3 border-2 rounded-lg"><img src={`shopping-cart-02.png`} alt="filter" /></button>
+                  <button className="p-3 border-2 rounded-lg"><img src={`favourite.png`} alt="button" /></button>
+              
+            </div>
+              </div>
+            </div>
+            <div className="border-2 rounded-lg" style={{ height:"344px"}}>
+              <img src={`bg-image2.svg`} alt="product-pic" style={{height: "256px", backgroundColor:"#d1d1d1"}}/>
+              <div className="p-4 text-sm flex justify-between">
+                <div>
+                  <p className="font-semibold">Product 1</p>
+                  <p className="py-2">
+                    <span style={{color: "#C1CF16"}}className="font-bold">9000RWF</span>
+                    <span className="text-gray-400 px-2" style={{textDecoration: "line-through"}}>12,000Rwf</span> 
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <button className=" p-3 border-2 rounded-lg"><img src={`shopping-cart-02.png`} alt="filter" /></button>
+                  <button className="p-3 border-2 rounded-lg"><img src={`favourite.png`} alt="button" /></button>
+              
+            </div>
+              </div>
+            </div>
+            <div className="border-2 rounded-lg" style={{ height:"344px"}}>
+              <img src={`bg-image2.svg`} alt="product-pic" style={{height: "256px", backgroundColor:"#d1d1d1"}}/>
+              <div className="p-4 text-sm flex justify-between">
+                <div>
+                  <p className="font-semibold">Product 1</p>
+                  <p className="py-2">
+                    <span style={{color: "#C1CF16"}}className="font-bold">9000RWF</span>
+                    <span className="text-gray-400 px-2" style={{textDecoration: "line-through"}}>12,000Rwf</span> 
                   </p>
                 </div>
                 <div className="flex gap-2">
