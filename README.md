@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mark 8
+
+Mark 8 is an e_commerce that is sell clothes online
+
+## Table of Contents
+
+- Project-Title
+  - Description
+  - Table of Contents
+  - Features
+  - Technologies Used
+  - Getting Started
+    - Prerequisites
+    - Installation
+    - Running the Application
+  - Usage
+  - Learn More
+  - Deployment
+  - Contributing
+  - License
+  - Contact
+
+## Features
+
+- login
+- product listing
+-search store, clothes
+-trending shop
+-store details
+-check chart
+## Technologies Used
+
+- Next.js
+- React
+- Tailwind CSS
+- TypeScript
+-VScode
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [npm](https://www.npmjs.com/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/project-name.git
+   cd project-name
+   npm i
+   
+### Run the application
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1.npm run dev
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
+1.navigate URL: http://localhost:3000
+2.login using the credentials(username: user@gmail.com, password: Password1)
+3. the product page appears and you surf through the available products and check out the trending stores.
+4. If you click on the store icon in the navigation bar at the top of the page, you get a more detailed description of our stores and their trending products
+5. clicking on the 'My Cart' button also brings out a sidebar that shows your current choices.
+6. clicking on the 'saved' button also shows your saved products.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Deployment
